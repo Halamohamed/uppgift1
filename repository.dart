@@ -18,10 +18,18 @@ abstract class Repository<T> {
   void delete(T item) => _items.remove(item);
 }
 
-class PersonRepository extends Repository<Person> {}
+class PersonRepository extends Repository<Person> {
+  PersonRepository(List list);
+}
 
-class VehicleRepository extends Repository<Vehicle> {}
+class VehicleRepository extends Repository<Vehicle> {
+  VehicleRepository(List list);
+}
 
-class CarRepository extends Repository<Car> {}
+class CarRepository extends Repository<Car> {
+  List<Car> carList = [];
+}
 
-class ParkingSpaceRepository extends Repository<Parkingspace> {}
+class ParkingSpaceRepository extends Repository<Parkingspace> {
+  List<Parkingspace> parkingSpaceList = [];
+}
