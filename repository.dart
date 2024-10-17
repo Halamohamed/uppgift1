@@ -19,11 +19,12 @@ abstract class Repository<T> {
 }
 
 class PersonRepository extends Repository<Person> {
-  PersonRepository(List list);
+  List<Person> personList = [];
 }
 
 class VehicleRepository extends Repository<Vehicle> {
-  VehicleRepository(List list);
+  List<Vehicle> vehicleList = [];
+  //VehicleRepository(List list);
 }
 
 class CarRepository extends Repository<Car> {
