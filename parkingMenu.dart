@@ -1,4 +1,8 @@
 import 'dart:io';
+import 'dart:math';
+
+import 'menu.dart';
+import 'models/Parking.dart';
 
 void ParkingMenu() {
   bool loop = true;
@@ -39,11 +43,29 @@ void ParkingMenu() {
   }
 }
 
-void updateParking() {}
+void updateParking() {
+  print("skriv parkering nummer du vill uppdatera");
+  var number = stdin.readLineSync();
+  for (var element in parkingRepo.getAll()) {
+    if (element.id == number) {
+      stdout.write('skriv den fordon nummer');
+      var newNo = stdin.readLineSync();
+      stdout.write('skriv den ny parkeringplats nummer');
+      var parkNo = stdin.readLineSync();
+      parkingRepo.update(
+          element,
+          Parking(element.id, newNo as int, parkNo as int, DateTime.now(),
+              DateTime.now().add(Duration(hours: 2))));
+    } else
+      print('finns inte parkeringplatsen');
+  }
+}
 
 void deleteParking() {}
 
-void getParking() {}
+void getParking() {
+  parkingRepo.getAll();
+}
 
 void parkingCreate() {}
 

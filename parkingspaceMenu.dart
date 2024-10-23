@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'menu.dart';
+import 'models/parkingSpace.dart';
+
 void ParkingspaceMenu() {
   bool loop = true;
   while (loop) {
@@ -40,10 +43,26 @@ void ParkingspaceMenu() {
   }
 }
 
-void updateParkingspace() {}
+void updateParkingspace() {
+  print("skriv parkering plats nummer du vill uppdatera");
+  var number = stdin.readLineSync();
+  for (var element in parkingSpaceRepo.getAll()) {
+    if (element.adress == number) {
+      stdout.write('skriv den ny address');
+      var newAdress = stdin.readLineSync();
+      stdout.write('skriv den ny address');
+      var prisPerHour = stdin.readLineSync();
+      parkingSpaceRepo.update(element,
+          Parkingspace(element.id, newAdress, int.tryParse(prisPerHour!)));
+    } else
+      print('finns inte parkeringplatsen');
+  }
+}
 
 void deleteParkingspace() {}
 
-void getParkingspace() {}
+void getParkingspace() {
+  parkingSpaceRepo.getAll();
+}
 
 void createParkingspace() {}

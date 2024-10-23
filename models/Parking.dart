@@ -1,4 +1,5 @@
 class Parking {
+  int? id;
   int vehicleId;
   int parkingSpaceId;
   DateTime startTime;

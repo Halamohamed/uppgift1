@@ -6,6 +6,10 @@ import 'repository.dart';
 import 'vehicleMenu.dart';
 
 PersonRepository personRepo = PersonRepository();
+CarRepository carRepo = CarRepository();
+VehicleRepository vehicleRepo = VehicleRepository();
+ParkingRepository parkingRepo = ParkingRepository();
+ParkingSpaceRepository parkingSpaceRepo = ParkingSpaceRepository();
 
 void menu() {
   bool loop = true;
