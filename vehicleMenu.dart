@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'Vehicle.dart';
+import 'models/Vehicle.dart';
 import 'main.dart';
-import 'person.dart';
 
 void vehicleCreate() {
   print('skriv registernummer: ');

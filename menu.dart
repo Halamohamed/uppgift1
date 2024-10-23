@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'person.dart';
+import 'parkingMenu.dart';
+import 'parkingspaceMenu.dart';
 import 'personMenu.dart';
 import 'repository.dart';
 import 'vehicleMenu.dart';
@@ -28,12 +29,14 @@ void menu() {
         break;
       case '2':
         print('hantera fordon');
-        vehicleHandle();
+        vehicleMenu();
         break;
       case '3':
+        ParkingspaceMenu();
         print('hantera parkeringsplatser');
         break;
       case '4':
+        ParkingMenu();
         print('hantera parkeringar');
         break;
       case '5':
@@ -43,8 +46,4 @@ void menu() {
         print('välja 1-5 ');
     }
   }
-}
-
-void vehicleHandle() {
-  vehicleMenu();
 }

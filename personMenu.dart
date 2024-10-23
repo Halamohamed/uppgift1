@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'menu.dart';
-import 'person.dart';
+import 'models/person.dart';
 
 void personMenu() {
   bool loop = true;
@@ -39,6 +39,7 @@ void personChoice(var readPerson) {
       break;
     case '5':
       stdout.write('tillbaka till menyn');
+
       return;
     default:
       stdout.writeln('fel du få välja 1-5 ');

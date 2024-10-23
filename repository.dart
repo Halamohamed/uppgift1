@@ -1,7 +1,8 @@
-import 'Vehicle.dart';
-import 'car.dart';
-import 'parkingSpace.dart';
-import 'person.dart';
+import 'models/Vehicle.dart';
+import 'models/car.dart';
+import 'models/parkingSpace.dart';
+import 'models/person.dart';
+import 'models/Parking.dart';
 
 abstract class Repository<T> {
   List<T> _items = [];
@@ -15,6 +16,10 @@ abstract class Repository<T> {
     _items[index] = newItem;
   }
 
+  /* T getById(int id) {
+    return _items.getById(id);
+  }
+ */
   void delete(T item) => _items.remove(item);
 }
 
@@ -33,4 +38,8 @@ class CarRepository extends Repository<Car> {
 
 class ParkingSpaceRepository extends Repository<Parkingspace> {
   List<Parkingspace> parkingSpaceList = [];
+}
+
+class ParkingRepository extends Repository<Parking> {
+  final List<Parking> pakeringList = [];
 }
