@@ -8,7 +8,7 @@ void ParkingMenu() {
   bool loop = true;
   while (loop) {
     print("Du har valt att hantera Parkering. Vad vill du göra?");
-    print("1. Skapa ny parking");
+    print("1. gör ny parkering");
     print("2. Visa alla parkering");
     print("3. Updatera parkering");
     print("4. Ta bort parering");
@@ -18,7 +18,7 @@ void ParkingMenu() {
 
     switch (readParking) {
       case '1':
-        parkingCreate();
+        addparking();
         stdout.writeln('skapat');
         break;
       case '2':
@@ -67,6 +67,17 @@ void getParking() {
   parkingRepo.getAll();
 }
 
-void parkingCreate() {}
+void addparking() {
+  stdout.write('skriv  nummer av parkering');
+  var id = stdin.readLineSync();
+  stdout.write('skriv fordon nummer du vill parkera');
+  int vehicleId = stdin.readLineSync() as int;
+  stdout.write('skriv parkeringsplats nummer ');
+  int parkingSpaceId = stdin.readLineSync() as int;
+  Parking parking = Parking(id, vehicleId, parkingSpaceId, DateTime.now(),
+      DateTime.now().add(Duration(hours: 2)));
+
+  parkingRepo.add(parking);
+}
 
 void parkingChoice(String? readParking) {}

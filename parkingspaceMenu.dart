@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'menu.dart';
+import 'models/Vehicle.dart';
 import 'models/parkingSpace.dart';
 
 void ParkingspaceMenu() {
@@ -18,7 +19,7 @@ void ParkingspaceMenu() {
 
     switch (choice) {
       case '1':
-        createParkingspace();
+        newParkingspace();
         stdout.writeln('skapat');
         break;
       case '2':
@@ -52,8 +53,10 @@ void updateParkingspace() {
       var newAdress = stdin.readLineSync();
       stdout.write('skriv den ny address');
       var prisPerHour = stdin.readLineSync();
-      parkingSpaceRepo.update(element,
-          Parkingspace(element.id, newAdress, int.tryParse(prisPerHour!)));
+      parkingSpaceRepo.update(
+          element,
+          Parkingspace(element.id, newAdress, element.vehicles,
+              int.tryParse(prisPerHour!)));
     } else
       print('finns inte parkeringplatsen');
   }
@@ -65,4 +68,20 @@ void getParkingspace() {
   parkingSpaceRepo.getAll();
 }
 
-void createParkingspace() {}
+void newParkingspace() {
+  stdout.write('skriv  nummer av parkering');
+  int id = stdin.readLineSync() as int;
+  stdout.write('skriv parkeringplats adress ');
+  var adress = stdin.readLineSync();
+  stdout.write('skriv fordon regesteringsnummer ');
+  var regNo = stdin.readLineSync();
+
+  Vehicle vehicle = Vehicle(regNo!);
+  for (var element in parkingSpaceRepo.getAll()) {
+    if (element.vehicles.contains(regNo)) {}
+  }
+
+  Parkingspace parking = Parkingspace(id, adress, vehicle as List<Vehicle>, 10);
+
+  parkingSpaceRepo.add(parking);
+}
