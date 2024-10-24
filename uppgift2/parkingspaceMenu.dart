@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'menu.dart';
 import 'models/Vehicle.dart';
 import 'models/parkingSpace.dart';
@@ -74,14 +73,20 @@ void newParkingspace() {
   stdout.write('skriv parkeringplats adress ');
   var adress = stdin.readLineSync();
   stdout.write('skriv fordon regesteringsnummer ');
-  var regNo = stdin.readLineSync();
+  String? regNo = stdin.readLineSync();
 
-  Vehicle vehicle = Vehicle(regNo!);
+  Vehicle? vehicle;
+
   for (var element in parkingSpaceRepo.getAll()) {
-    if (element.vehicles.contains(regNo)) {}
+    if (element.vehicles.contains(regNo)) {
+      Vehicle vehicle = Vehicle(regNo.toString());
+    }
   }
 
-  Parkingspace parking = Parkingspace(id, adress, vehicle as List<Vehicle>, 10);
+  Parkingspace parkingspace =
+      Parkingspace(id, adress, vehicle as List<Vehicle>, 10);
 
-  parkingSpaceRepo.add(parking);
+  parkingspace.addVehicle(vehicle!);
+
+  parkingSpaceRepo.add(parkingspace);
 }
